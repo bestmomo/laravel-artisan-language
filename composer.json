@@ -1,0 +1,22 @@
+{
+  "name": "bestmomo/laravel5-artisan-language",
+  "description": "Add artisan commands for language strings",
+  "homepage": "https://github.com/bestmomo/laravel-artisan-language",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Bestmomo",
+      "email": "grandheretique@free.fr",
+      "homepage":"http://laravel.sillo.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "illuminate/support": "~5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Bestmomo\\ArtisanLanguage\\": "src/"
+    }
+  }
+}
