@@ -17,7 +17,7 @@ Add these 4 artisan commands :
 
 Add package to your composer.json file :
 ```
-    composer require bestmomo/laravel-artisan-language
+    composer require bestmomo/laravel5-artisan-language
 ```
 
 Add service provider to `config/app.php` :
