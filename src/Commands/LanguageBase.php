@@ -52,7 +52,7 @@ abstract class LanguageBase extends Command
             ->collapse()
             ->map(function (SplFileInfo $item) {
                 preg_match_all(
-                    '/(@lang|trans|__|trans_choice)\s*(\(\s*[\'"])([^$]*)([\'"]\s*\))/U',
+                    '/(@lang|__)\s*(\(\s*[\'"])([^$]*)([\'"]\s*\))/U',
                     $item->getContents(),
                     $out,
                     PREG_PATTERN_ORDER);
@@ -130,6 +130,6 @@ abstract class LanguageBase extends Command
      */
     protected function updateFile(Collection $strings, $locale)
     {
-        $this->filesystem->put($this->getPath($locale), $strings->toJSON(JSON_PRETTY_PRINT));
+        $this->filesystem->put($this->getPath($locale), $strings->toJSON(JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
     }
 }
