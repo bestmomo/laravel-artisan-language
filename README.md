@@ -20,7 +20,7 @@ Add package to your composer.json file :
     composer require bestmomo/laravel5-artisan-language
 ```
 
-Add service provider to `config/app.php` :
+For Laravel 5.4 add service provider to `config/app.php` (with Laravel 5.5 there is the package discovery):
 ```
     Bestmomo\ArtisanLanguage\ArtisanLanguageProvider::class,
 ```

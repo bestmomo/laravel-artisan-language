@@ -18,5 +18,12 @@
     "psr-4": {
       "Bestmomo\\ArtisanLanguage\\": "src/"
     }
+  },
+  "extra": {
+      "laravel": {
+          "providers": [
+              "Bestmomo\\ArtisanLanguage\\ArtisanLanguageProvider"
+          ]
+      }
   }
 }
