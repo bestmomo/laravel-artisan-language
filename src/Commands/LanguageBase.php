@@ -47,12 +47,13 @@ abstract class LanguageBase extends Command
     {
         return collect([
             $this->filesystem->allFiles(app_path()),
-            $this->filesystem->allFiles(resource_path('views'))
+            $this->filesystem->allFiles(resource_path('views')),
+            $this->filesystem->allFiles(resource_path('js'))
         ])
             ->collapse()
             ->map(function (SplFileInfo $item) {
                 preg_match_all(
-                    '/(@lang|__)\s*(\(\s*[\'"])([^$]*)([\'"]\s*\))/U',
+                    '/(@lang|__|\$t)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U',
                     $item->getContents(),
                     $out,
                     PREG_PATTERN_ORDER);
