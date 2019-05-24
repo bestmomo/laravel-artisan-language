@@ -53,7 +53,7 @@ abstract class LanguageBase extends Command
             ->collapse()
             ->map(function (SplFileInfo $item) {
                 preg_match_all(
-                    '/(@lang|__|\$t)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U',
+                    '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U',
                     $item->getContents(),
                     $out,
                     PREG_PATTERN_ORDER);
