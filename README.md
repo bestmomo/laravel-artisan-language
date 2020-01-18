@@ -24,5 +24,30 @@ For Laravel 5.4 add service provider to `config/app.php` (with Laravel >=5.5 the
 ```
     Bestmomo\ArtisanLanguage\ArtisanLanguageProvider::class,
 ```
+
+### Configuration (optional) ###
+
+if you need to change some parameters you can add a config file in the config path of your project which name is `artisan-language.php` with content like before :
+```php
+<?php
+return [
+    "scan_paths" => [
+        app_path(),
+        resource_path('views'),
+        resource_path('assets/js'),
+    ],
+    "scan_pattern" => '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*)([\'"]+\s*(,[^\)]*)*\))/U',
+    "lang_path" => resource_path('lang'),
+];
+
+```
+
+### Use ###
+to generate a translation file for locale "fr" you should launch command before :
+```shell script
+php artisan language:make fr
+```
+use option `--force` if the file already exists and you want overwrite it.
+
 And it's done !
 
