@@ -45,15 +45,19 @@ abstract class LanguageBase extends Command
      */
     protected function getStrings()
     {
-        return collect([
-            $this->filesystem->allFiles(app_path()),
-            $this->filesystem->allFiles(resource_path('views')),
-            $this->filesystem->allFiles(resource_path('js'))
-        ])
+        return collect(config('artisan-language.scan_paths', [
+            app_path(),
+            resource_path('views'),
+            resource_path('js'),
+        ]))
+            ->map(function (string $path) {
+                return $this->filesystem->allFiles($path);
+            })
             ->collapse()
             ->map(function (SplFileInfo $item) {
                 preg_match_all(
-                    '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U',
+                    config ('artisan-language.scan_pattern',
+                        '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U'),
                     $item->getContents(),
                     $out,
                     PREG_PATTERN_ORDER);
@@ -120,7 +124,7 @@ abstract class LanguageBase extends Command
      */
     protected function getPath($locale)
     {
-        return resource_path('lang') . '/' . $locale . '.json';
+        return config('artisan-language.lang_path', resource_path('lang')) . '/' . $locale . '.json';
     }
 
     /**
