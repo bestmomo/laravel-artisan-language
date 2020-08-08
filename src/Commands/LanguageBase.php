@@ -57,7 +57,7 @@ abstract class LanguageBase extends Command
             ->map(function (SplFileInfo $item) {
                 preg_match_all(
                     config ('artisan-language.scan_pattern',
-                        '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*[^.])([\'"].*)\)*/U'),
+                      '/(@lang|__|\$t|\$tc)\s*(\(\s*[\'"])([^$]*)([\'"]+\s*(,[^\)]*)*\))/U'),
                     $item->getContents(),
                     $out,
                     PREG_PATTERN_ORDER);
