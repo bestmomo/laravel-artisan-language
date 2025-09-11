@@ -124,7 +124,7 @@ abstract class LanguageBase extends Command
      */
     protected function getPath($locale)
     {
-        return config('artisan-language.lang_path', resource_path('lang')) . '/' . $locale . '.json';
+        return config('artisan-language.lang_path', base_path('lang')) . '/' . $locale . '.json';
     }
 
     /**
